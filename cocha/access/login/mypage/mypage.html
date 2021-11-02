@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>mypage</title>
+    <link rel="stylesheet" href="mypage.css" type="text/css">
+    <script type="text/javascript" src="../../../js/jquery-3.6.0.min.js"></script>
+    <script src="asyn.js"></script>
+</head>
+
+<body>
+    <header>
+
+    </header>
+    <main>
+        <div class="container">
+
+            <div class="side_var"></div>
+
+            <div class="talk">
+                <div class="face_icon">
+                    <!-- <img src="cat.jpeg"> -->
+                </div>
+                <div class="chat">
+                    <!-- メッセージ表示欄 -->
+                    <div id="msg_box"></div>
+                    <!-- フォーム欄 -->
+                    <form method="post" action="">
+                        <input id="msg" type="text" name="message" value="">
+                        <input type="button" name="送信" value="送信" onclick="writeMessage()">
+                    </form>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+    <footer>
+
+    </footer>
+</body>
+
+</html>
