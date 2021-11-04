@@ -1,45 +1,59 @@
 <?php
-    //変数用意
-    $log_file = "message.log";
-    if(file_exists($log_file)){ //ファイルがある時
-
-        session_start();
-        $name = htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, "UTF-8"); //login.phpで保存したuser_name
-    
-        //logファイル読込&タグ追加
-        if($_POST["mode"] == 0){ 
-            $log = file($log_file, FILE_IGNORE_NEW_LINES); //配列として取り出す
-            foreach ($log as $str){
-                $message = explode("<>", $str);
-                if($message[0] == $_SESSION['user_name']){
-                    $tag_message = "<div class='right_bubble'>".$message[1]."</div>";
-                }else{
-                    $tag_message = "<div class='left_bubble'>".$message[1]."</div>";
-                }
-                
-                echo $tag_message;
-            }
-        }else if($_POST["mode"] == 1){ //logファイル書き込み
-    
-            $message = "";
-            if (!empty($_POST['message'])) { //メッセージが空でない時
-    
-                //送り主とメッセージ保存
-                $message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
-                $str = $name."<>".$message.PHP_EOL;
-                
-                //ファイル書き込み
-                file_put_contents($log_file, $str, FILE_APPEND);
-                
-            }else{
-                exit;
-            }
-    
-        }
-
-    }else{ //ファイルが無い時
-        exit;
+    //データベース接続
+    $dsn = "mysql:dbname=***;host=***";
+    $user = "***";
+    $db_pass = "***";
+    try{
+        $pdo = new PDO($dsn, $user, $db_pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
+    }catch(PDOException $e){
+        echo "データベース接続失敗：";
+        echo $e->getMesseage()."<br>";
     }
 
+    //テーブル作成(ない場合)
+    $sql = "CREATE TABLE IF NOT EXISTS message_box"
+            ."("
+            ."id INT AUTO_INCREMENT PRIMARY KEY,"
+            ."name VARCHAR(24) NOT NULL,"
+            ."message TEXT NOT NULL"
+            .");";
+    $stmt = $pdo->query($sql);
+
+    session_start();
+    $name = htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, "UTF-8"); //ログイン中のユーザ確認
+
+    if($_POST["mode"] == 0){ //読込モード
+        
+        $sql = "SELECT * FROM message_box";
+        $stmt = $pdo->query($sql);
+        $result = $stmt->fetchAll();
+        if(!empty($result)){ //メッセージがある場合
+            foreach($result as $row){
+                if($row["name"] == $_SESSION['user_name']){ //送り主が自分の場合
+                    echo "<div class='right_bubble'>".$row["message"]."</div>";
+                }else{ //他人の場合
+                    echo "<div class='left_bubble'>".$row["message"]."</div>";
+                }
+            }
+        }else{
+            exit();
+        }
+
+    }else if($_POST["mode"] == 1){ //書き込みモード
+
+        if(!empty($_POST["message"])){
+            $message = htmlspecialchars($_POST['message'], ENT_QUOTES, "UTF-8");
+            echo $message; //htmlに表示
+    
+            $sql = "INSERT INTO message_box(name, message) VALUES (:name, :message)";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(":name", $name, PDO::PARAM_STR);
+            $stmt->bindParam(":message", $message, PDO::PARAM_STR);
+            $stmt->execute();
+        }else{
+            exit();
+        }
+
+    }
 
 ?>

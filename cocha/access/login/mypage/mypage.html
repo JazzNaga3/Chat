@@ -12,24 +12,49 @@
 
 <body>
     <header>
-
+        Cocha
     </header>
     <main>
         <div class="container">
 
-            <div class="side_var"></div>
+            <!-- 左側 -->
+            <div class="sidebar">
+                <ul>
+                    <li>プロフィール</li>
+                    <li>フレンド</li>
+                    <li>トーク</li>
+                    <li>設定</li>
+                    <li>ログアウト</li>
+                </ul>
+            </div>
 
+            <!-- <div class="profile">プロフィール</div>
+            <div class="friend">フレンド</div>
+            <div class="option">設定</div>
+            <div class="logout">ログアウト</div> -->
+            
+            <!-- 右側 -->
             <div class="talk">
-                <div class="face_icon">
-                    <!-- <img src="cat.jpeg"> -->
+
+                <!-- チャット欄 -->
+                <div class="scroll">
+                    <div class="face_icon">
+                        <!-- <img src="cat.jpeg"> -->
+                    </div>
+                    <div class="chat">
+                        <!-- メッセージ表示欄 -->
+                        <div id="msg_box"></div>
+                    </div>
                 </div>
-                <div class="chat">
-                    <!-- メッセージ表示欄 -->
-                    <div id="msg_box"></div>
-                    <!-- フォーム欄 -->
+
+                <!-- フォーム欄 -->
+                <div class="action">
                     <form method="post" action="">
-                        <input id="msg" type="text" name="message" value="">
-                        <input type="button" name="送信" value="送信" onclick="writeMessage()">
+                        <div class="form_area">
+                            <textarea id="msg" name="message" value="" placeholder="メッセージを入力"></textarea>
+                            <!-- <input id="msg" type="text" name="message" value=""> -->
+                            <input class="submit" type="button" name="送信" value="送信" onclick="writeMessage()">
+                        </div>
                     </form>
                 </div>
             </div>
@@ -37,9 +62,9 @@
         </div>
 
     </main>
-    <footer>
-
-    </footer>
+    <!-- <footer>
+        フッター
+    </footer> -->
 </body>
 
 </html>

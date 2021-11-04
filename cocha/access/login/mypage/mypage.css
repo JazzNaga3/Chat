@@ -1,14 +1,105 @@
-* {
-  box-sizing: border-box;
+body {
+  /* width: 100vw;
+  height: 100vh; */
+  position: relative;
+  top: 0;
+  left: 0;
 }
 
+header {
+  /*ヘッダー*/
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 5vh;
+  background-color: rgba(0, 0, 0, 0.158);
+}
+
+main {
+  /*main*/
+  position: fixed;
+  top: 5vh;
+  left: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 95vh;
+}
+
+/* footer {
+  position: absolute;
+  top: 95vh;
+  left: 0;
+  width: 100vw;
+  height: 5vh;
+  background-color: rgba(0, 0, 0, 0.137);
+} */
+
 .container {
+  display: flex; /*sidebarとコンテンツ部分の親要素*/
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 95vh;
+}
+
+.container .sidebar {
+  background-color: aqua;
+  width: 25vw;
+  height: 95vh;
+}
+
+.container .talk {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: linear-gradient(to bottom, #fff 0%, lightblue 100%);
+  width: 75vw;
+  height: 95vh;
+}
+
+.talk .scroll {
+  overflow-x: hidden;
+  overflow-y: scroll;
+  height: 80vh;
+}
+
+/* #msg_box {
+  height: 90%;
+  display: flex;
+  flex-direction: column;
+} */
+
+.action {
+  position: absolute;
+  top: 80vh;
+  height: 15vh;
+}
+
+.forma_area {
   display: flex;
   justify-content: center;
-  /* align-items: center; */
-  /* flex-wrap: nowrap; */
-  width: 100%;
-  background-color: #e6e6e6;
+  position: relative;
+}
+
+.action textarea {
+  position: absolute;
+  top: 3vh;
+  left: 20vw;
+  width: 35vw;
+  height: 8vh;
+  border: 2px solid #aaa;
+  border-radius: 5px;
+  resize: none;
+}
+
+.action .submit {
+  position: absolute;
+  top: 3vh;
+  left: 58vw;
+  border-radius: 5px;
+  height: 4vh;
 }
 
 /* 自分以外(フレンド)の吹き出し */
@@ -16,17 +107,22 @@
   position: relative;
   background: #fff;
   border: 1px solid #777;
-  margin: 10px;
+  margin-right: 20%;
+  margin-left: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px;
   border-radius: 15px;
-  margin-right: 20%;
   clear: both;
   max-width: 500px;
   float: left;
+  word-break: break-all;
+  text-align: left;
+  white-space: pre-wrap;
 }
 
-.left_bubble:after,
-.left_bubble:before {
+.left_bubble:before,
+.left_bubble:after {
   right: 100%;
   top: 50%;
   border: solid transparent;
@@ -38,15 +134,13 @@
 }
 
 .left_bubble:after {
-  border-color: rgba(255, 255, 255, 0);
   border-right-color: #fff;
   border-width: 7px;
   margin-top: -7px;
 }
 
 .left_bubble:before {
-  border-color: rgba(0, 0, 0, 0);
-  border-right-color: #000;
+  border-right-color: #777;
   border-width: 8px;
   margin-top: -8px;
 }
@@ -56,17 +150,22 @@
   position: relative;
   background: #85e249;
   border: 1px solid #777;
-  margin: 10px;
+  margin-right: 50px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   padding: 10px;
   border-radius: 15px;
   margin-left: 20%;
-  clear: both;
+  clear: both; /*同じ行にメッセージを表示させない*/
   max-width: 500px;
   float: right;
+  word-break: break-all;
+  text-align: left;
+  white-space: pre-wrap;
 }
 
-.right_bubble:after,
-.right_bubble:before {
+.right_bubble:before,
+.right_bubble:after {
   left: 100%;
   top: 50%;
   border: solid transparent;
@@ -78,20 +177,20 @@
 }
 
 .right_bubble:after {
-  border-color: rgba(134, 226, 73, 0);
   border-left-color: #85e249;
   border-width: 7px;
   margin-top: -7px;
 }
 
 .right_bubble:before {
-  border-color: rgba(119, 119, 119, 0);
   border-left-color: #777;
   border-width: 8px;
   margin-top: -8px;
 }
 
-/* 割り込み防止 */
+/*******************************
+* 割り込みを解除
+********************************/
 .clear_bubble {
   clear: both;
 }
