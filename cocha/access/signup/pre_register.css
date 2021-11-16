@@ -6,9 +6,6 @@ body {
   background-color: #e6e6e6;
   padding-bottom: 0;
   margin-bottom: 0;
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro",
-    "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体",
-    "メイリオ", sans-serif;
 }
 
 /*ヘッダー*/
@@ -157,18 +154,18 @@ main {
   padding-top: 15vh;
   padding-left: 5vw;
   padding-right: 5vw;
+  /* padding-bottom: 100vh; */
 }
 
 /*フッター*/
-/* footer{
+/* footer {
     width: 100%;
     right: 0;
     left: 0;
     margin-top: 10vh;
-    margin-bottom: 0;
     background-color: black;
     color: white;
     position: absolute;
     justify-content: center;
     text-align: center;
-} */
+  } */

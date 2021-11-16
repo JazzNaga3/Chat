@@ -1,159 +1,170 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #e6e6e6;
-    padding-bottom: 0;
-    margin-bottom: 0;
+body {
+  background-color: #e6e6e6;
+  padding-bottom: 0;
+  margin-bottom: 0;
 }
 
 /*ヘッダー*/
-header{
-    width: 100%;
-    padding: 20px 4% 10px;
+header {
+  width: 100%;
+  padding: 20px 4% 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+
+header h1 {
+  /*Cocha*/
+  margin: 10px;
+  padding: 0;
+  font-size: 30px;
+  font-family: Century Gothic;
+  font-weight: bold;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: #4b4b4b;
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .nav {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
     display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: #fff;
-}
+    /* 右からスライド */
+    transition: left 0.5s;
+  }
 
-header h1{ /*Cocha*/
-    margin: 10px;
-    padding: 0;
-    font-size: 30px;
-    font-family: Century Gothic;
-    font-weight: bold;
-}
+  .nav ul {
+    list-style: none;
+  }
 
-header h1 a{
-    text-decoration: none;
-    color: #4b4b4b;
-}
+  .nav li:not(:last-child) {
+    margin-bottom: 30px;
+  }
 
-@media (max-width:767px){
-
-    html,body{
-        overflow-x: hidden;
-    }
-
-    .nav{
-        position: fixed;
-        top: 0;
-        left: 100%;
-        width: 100%;
-        height: 100vh;
-        background: rgba(0,0,0,0.9);
-        color: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* 右からスライド */
-        transition: left 0.5s;
-    }
-
-    .nav ul{
-        list-style:none;
-    }
-
-    .nav li:not(:last-child){
-        margin-bottom: 30px;
-    }
-
-    .nav a{
-        color: #ffffff;
-    }
-
+  .nav a {
+    color: #ffffff;
+  }
 }
 
 /* ナビゲーションボタン（開く） */
-#navbtn{
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    padding: 0;
-    outline: none;
-    border: none;
-    background: none;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
+#navbtn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
 }
-  
-#navbtn::before,#navbtn::after{
-    content : '';
-    display: block;
-    height: 1px;
-    background-color: #333333;
-    transform: translateY(10px);
-    transition: 0.3s ease-in-out;
+
+#navbtn::before,
+#navbtn::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #333333;
+  transform: translateY(10px);
+  transition: 0.3s ease-in-out;
 }
-  
-#navbtn::before{
-    transform: translateY(-10px);
-    box-shadow: 0px 10px #333333;
+
+#navbtn::before {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px #333333;
 }
-  
+
 /* ナビゲーションボタン（閉じる） */
-.open_nav #navbtn{
-    z-index: 100;
+.open_nav #navbtn {
+  z-index: 100;
 }
 
-.open_nav #navbtn::before{
-    transform: rotate(-45deg);
-    box-shadow: none;
+.open_nav #navbtn::before {
+  transform: rotate(-45deg);
+  box-shadow: none;
 }
 
-.open_nav #navbtn::after{
-    transform: rotate(45deg);
-    box-shadow: none;
+.open_nav #navbtn::after {
+  transform: rotate(45deg);
+  box-shadow: none;
 }
 
 /* ナビゲーションメニュー 開いた時*/
-.open_nav .nav{
-    left: 0;
+.open_nav .nav {
+  left: 0;
 }
-  
-@media(min-width: 767px){
 
-    /* PCではボタン非表示 */
-    #navbtn{
-        display: none;
-    }
+@media (min-width: 767px) {
+  /* PCではボタン非表示 */
+  #navbtn {
+    display: none;
+  }
 
-    /* ヘッダーは横並び */
-    header{
-        align-items: center;
-    }
+  /* ヘッダーは横並び */
+  header {
+    align-items: center;
+  }
 
-    /* メニューを右に寄せる */
-    .nav{
-      /* 右寄せ */
-        margin-left: auto;
-    }
+  /* メニューを右に寄せる */
+  .nav {
+    /* 右寄せ */
+    margin-left: auto;
+  }
 
-    .nav ul{
-        display: flex;
-        list-style: none;
-    }
+  .nav ul {
+    display: flex;
+    list-style: none;
+  }
 
-    .nav ul li{
-        margin-right: 30px;
-        
-    }
+  .nav ul li {
+    margin-right: 30px;
+  }
 
-    .nav ul li a { 
-        color: #000000;
-        text-decoration: none;
-    }
-
+  .nav ul li a {
+    color: #000000;
+    text-decoration: none;
+  }
 }
 
 /*メイン部分*/
-main{
-    padding-top: 15vh;
-    padding-left: 5vw;
-    padding-right: 5vw;
+main {
+  padding-top: 15vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
+}
+
+/*フッター*/
+footer {
+  width: 100%;
+  right: 0;
+  left: 0;
+  margin-top: 10vh;
+  background-color: black;
+  color: white;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
 }

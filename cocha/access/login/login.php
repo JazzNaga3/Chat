@@ -33,7 +33,16 @@
     </header>
     <main>
     </main>
- 
+    <!-- <footer>
+        <p>
+            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam, adipisci asperiores. Nam exercitationem
+            architecto soluta adipisci, culpa tempore eligendi atque nobis molestias recusandae. Ipsam cum magni quia
+            consequatur facilis architecto?
+        </p>
+        <p>
+            © Practice.2021 All Rights Reserved.
+        </p>
+    </footer> -->
 </body>
 
 </html>
@@ -41,14 +50,12 @@
 <?php
 //ユーザ情報
 $name = $_POST["user_name"];
-session_start();
-$_SESSION['user_name'] = $name; //変数をセッションに保存
 $pass = $_POST["pass"];
 
 // DB接続設定
-$dsn = "mysql:dbname=****;host=****";
-$user = "****";
-$db_pass = "****";
+$dsn = "mysql:dbname=データベース名;host=ホスト名";
+$user = "ユーザ名";
+$db_pass = "パスワード";
 try {
     $pdo = new PDO($dsn, $user, $db_pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
 } catch (PDOException $e) {
@@ -62,9 +69,12 @@ $stmt->bindParam(":name", $name, PDO::PARAM_STR);
 $stmt->execute();
 $result = $stmt->fetch();
 
-
 if (!empty($result)) {
     if (password_verify($pass, $result["pass"])) {
+        $user_id = $result["user_id"];
+        //セッションに保存
+        session_start();
+        $_SESSION["user_id"] = $user_id;
         http_response_code(301);
         header("Location: ./mypage/mypage.html");
         exit();

@@ -1,299 +1,285 @@
-*{
-    box-sizing: border-box;
+* {
+  box-sizing: border-box;
 }
 
-body{
-    background-color: #e6e6e6;
-    padding-bottom: 0;
-    margin-bottom: 0;
+body {
+  background-color: #e6e6e6;
+  padding-bottom: 0;
+  margin-bottom: 0;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro",
+    "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体",
+    "メイリオ", sans-serif;
 }
 
 /*ヘッダー*/
-header{
-    width: 100%;
-    padding: 20px 4% 10px;
+header {
+  width: 100%;
+  padding: 20px 4% 10px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  background-color: #fff;
+}
+
+header h1 {
+  /*Cocha font*/
+  margin: 10px;
+  padding: 0;
+  font-size: 30px;
+  font-family: Century Gothic;
+  font-weight: bold;
+}
+
+header h1 a {
+  text-decoration: none;
+  color: #4b4b4b;
+}
+
+@media (max-width: 767px) {
+  html,
+  body {
+    overflow-x: hidden;
+  }
+
+  .nav {
     position: fixed;
     top: 0;
-    left: 0;
+    left: 100%;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    color: #ffffff;
     display: flex;
+    justify-content: center;
     align-items: center;
-    background-color: #fff;
-}
+    /* 右からスライド */
+    transition: left 0.5s;
+  }
 
-header h1{ /*Cocha*/
-    margin: 10px;
-    padding: 0;
-    font-size: 30px;
-    font-family: Century Gothic;
-    font-weight: bold;
-}
+  .nav ul {
+    list-style: none;
+  }
 
-header h1 a{
-    text-decoration: none;
-    color: #4b4b4b;
-}
+  .nav li:not(:last-child) {
+    margin-bottom: 30px;
+  }
 
-@media (max-width:767px){
-
-    html,body{
-        overflow-x: hidden;
-    }
-
-    .nav{
-        position: fixed;
-        top: 0;
-        left: 100%;
-        width: 100%;
-        height: 100vh;
-        background: rgba(0,0,0,0.9);
-        color: #ffffff;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        /* 右からスライド */
-        transition: left 0.5s;
-    }
-
-    .nav ul{
-        list-style:none;
-    }
-
-    .nav li:not(:last-child){
-        margin-bottom: 30px;
-    }
-
-    .nav a{
-        color: #ffffff;
-    }
-
+  .nav a {
+    color: #ffffff;
+  }
 }
 
 /* ナビゲーションボタン（開く） */
-#navbtn{
-    position: fixed;
-    top: 15px;
-    right: 15px;
-    padding: 0;
-    outline: none;
-    border: none;
-    background: none;
-    width: 30px;
-    height: 20px;
-    cursor: pointer;
+#navbtn {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  padding: 0;
+  outline: none;
+  border: none;
+  background: none;
+  width: 30px;
+  height: 20px;
+  cursor: pointer;
 }
-  
-#navbtn::before,#navbtn::after{
-    content : '';
-    display: block;
-    height: 1px;
-    background-color: #333333;
-    transform: translateY(10px);
-    transition: 0.3s ease-in-out;
+
+#navbtn::before,
+#navbtn::after {
+  content: "";
+  display: block;
+  height: 1px;
+  background-color: #333333;
+  transform: translateY(10px);
+  transition: 0.3s ease-in-out;
 }
-  
-#navbtn::before{
-    transform: translateY(-10px);
-    box-shadow: 0px 10px #333333;
+
+#navbtn::before {
+  transform: translateY(-10px);
+  box-shadow: 0px 10px #333333;
 }
-  
+
 /* ナビゲーションボタン（閉じる） */
-.open_nav #navbtn{
-    z-index: 100;
+.open_nav #navbtn {
+  z-index: 100;
 }
 
-.open_nav #navbtn::before{
-    transform: rotate(-45deg);
-    box-shadow: none;
+.open_nav #navbtn::before {
+  transform: rotate(-45deg);
+  box-shadow: none;
 }
 
-.open_nav #navbtn::after{
-    transform: rotate(45deg);
-    box-shadow: none;
+.open_nav #navbtn::after {
+  transform: rotate(45deg);
+  box-shadow: none;
 }
 
 /* ナビゲーションメニュー 開いた時*/
-.open_nav .nav{
-    left: 0;
+.open_nav .nav {
+  left: 0;
 }
-  
-@media(min-width: 767px){
 
-    /* PCではボタン非表示 */
-    #navbtn{
-        display: none;
-    }
+@media (min-width: 767px) {
+  /* PCではボタン非表示 */
+  #navbtn {
+    display: none;
+  }
 
-    /* ヘッダーは横並び */
-    header{
-        align-items: center;
-    }
+  /* ヘッダーは横並び */
+  header {
+    align-items: center;
+  }
 
-    /* メニューを右に寄せる */
-    .nav{
-      /* 右寄せ */
-        margin-left: auto;
-    }
+  /* メニューを右に寄せる */
+  .nav {
+    /* 右寄せ */
+    margin-left: auto;
+  }
 
-    .nav ul{
-        display: flex;
-        list-style: none;
-    }
+  .nav ul {
+    display: flex;
+    list-style: none;
+  }
 
-    .nav ul li{
-        margin-right: 30px;
-        
-    }
+  .nav ul li {
+    margin-right: 30px;
+  }
 
-    .nav ul li a { 
-        color: #000000;
-        text-decoration: none;
-    }
-
+  .nav ul li a {
+    color: #000000;
+    text-decoration: none;
+  }
 }
 
 /*メイン部分*/
-main{
-    padding-top: 15vh;
-    padding-left: 5vw;
-    padding-right: 5vw;
+main {
+  padding-top: 15vh;
+  padding-left: 5vw;
+  padding-right: 5vw;
 }
 
-.container{ /*親要素*/
-    display: flex;
-    width: 100%;
-    justify-content:center;
-    flex-wrap: nowrap;
+.container {
+  /*親要素*/
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
 /*左側*/
-.left span{
-    font-size: 4vw;
-    font-family: Century Gothic;
-    font-weight: bold;
-    padding-right: 5%;
+.left span {
+  font-size: 4vw;
+  font-family: Century Gothic;
+  font-weight: bold;
+  padding-right: 5%;
 }
 
-.left p{
-    width: 50%;
-    font-size: 3.5vw;
-    margin-left: 8vw;
-    text-align: center;
+.left p {
+  width: 50%;
+  font-size: 3.5vw;
+  margin-left: 8vw;
+  text-align: center;
 }
 
-#text1{
-    font-size: 4vw;
-    letter-spacing: 0.05em;
-    
+#text1 {
+  font-size: 4vw;
+  letter-spacing: 0.05em;
 }
 
 /*右側*/
-.right{
-    background-color: #ffffff;
-    width: 50%;
-    height: 60vh;
-    min-height: 300px;
-    margin-top: 8vh;
-    /* margin-left: 2vw;
-    margin-right: 2vw; */
-    border-radius: 2vw;
+.right {
+  background-color: #ffffff;
+  height: 60vh;
+  min-height: 300px;
+  margin-top: 8vh;
+  border-radius: 2vw;
 }
 
-.right h1{
-    padding-top: 2vh;
-    text-align: center;
-    font-size: 3vw;
-    letter-spacing: 0.05em;
-
+.right h1 {
+  padding-top: 2vh;
+  text-align: center;
+  font-size: 3vw;
+  letter-spacing: 0.05em;
 }
 
-.right form{
-    padding-left: 8vw;
-    padding-right: 8vw;
+.right form {
+  padding-left: 6vw;
+  padding-right: 6vw;
 }
 
-.form-item{
-    width: 100%;
-    margin-bottom: 2vh;
+.form-item {
+  width: 100%;
+  margin-bottom: 2vh;
 }
 
 .form-item input {
-    background: #f7f5f5;
-    border: none;
-    border-bottom: 2px solid #e9e9e9;
-    color: rgb(70, 70, 70);
-    font-size: 1.25vw;
-    height: 50px;
-    transition: border-color 0.3s;
-    width: 100%;
-    letter-spacing: 0.05em;
-  }
-
-.form-item input:focus{
-    border-bottom: 2px solid #c0c0c0;
-    outline: none;
+  background: #f7f5f5;
+  border: none;
+  border-bottom: 2px solid #e9e9e9;
+  color: rgb(70, 70, 70);
+  font-size: 1.25vw;
+  height: 7vh;
+  transition: border-color 0.3s;
+  width: 20vw;
+  letter-spacing: 0.05em;
 }
 
-.button-panel{
-    margin: 2em 0 0;
-    width: 100%;
-    padding-bottom: 2vh;
+.form-item input:focus {
+  border-bottom: 2px solid #c0c0c0;
+  outline: none;
 }
 
-.button{
-    background: #ee3e52; /*ボタン色*/
-    border: none;
-    color: #fff; /*文字色*/
-    cursor: pointer;
-    height: 7vh;
-    font-family: 'Open Sans', sans-serif;
-    font-size: 1.5vw;
-    letter-spacing: 0.05em; /*文字間のスペース*/
-    text-align: center;
-    text-transform: uppercase;
-    /*0.3sかけて色を変える*/
-    transition: background 0.3s ease-in-out;
-    width: 100%;
+.button-panel {
+  margin: 2em 0 0;
+  width: 100%;
+  padding-bottom: 2vh;
 }
 
-.button:hover{ /*ボタンにカーソルを置いた時*/
-    background: #ee3e53da;
+.button {
+  background: #ee3e52; /*ボタン色*/
+  border: none;
+  color: #fff; /*文字色*/
+  cursor: pointer;
+  height: 7vh;
+  font-family: "Open Sans", sans-serif;
+  font-size: 1.5vw;
+  letter-spacing: 0.05em; /*文字間のスペース*/
+  text-align: center;
+  text-transform: uppercase;
+  /*0.3sかけて色を変える*/
+  transition: background 0.3s ease-in-out;
+  width: 100%;
 }
 
-.form-footer{
-    font-size: 1vw;
-    text-align: center;
+.button:hover {
+  /*ボタンにカーソルを置いた時*/
+  background: #ee3e53da;
 }
 
-.form-footer a{
-    color: #8c8c8c;
-    text-decoration: none;
-    letter-spacing: 0.05em;
+.form-footer {
+  font-size: 1vw;
+  text-align: center;
+}
+
+.form-footer a {
+  color: #8c8c8c;
+  text-decoration: none;
+  letter-spacing: 0.05em;
 }
 
 .form-footer a:hover {
-    border-bottom: 1px dotted #8c8c8c;
+  border-bottom: 1px dotted #8c8c8c;
 }
 
 /*フッター*/
-footer{
-    width: 100%;
-    right: 0;
-    left: 0;
-    margin-top: 10vh;
-    background-color: black;
-    color: white;
-    position: absolute;
-    justify-content: center;
-    text-align: center;
+footer {
+  width: 100%;
+  right: 0;
+  left: 0;
+  margin-top: 10vh;
+  background-color: black;
+  color: white;
+  position: absolute;
+  justify-content: center;
+  text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-    

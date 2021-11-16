@@ -5,10 +5,10 @@
 define('MAIL_HOST','example.com');
 
 // メールユーザー名
-define('MAIL_USERNAME','****');
+define('MAIL_USERNAME','メールアドレス');
 
 // メールパスワード
-define('MAIL_PASSWORD','****');
+define('MAIL_PASSWORD','パスワード');
 
 // SMTPプロトコル
 define('MAIL_ENCRPT',"ssl");
@@ -17,10 +17,10 @@ define('MAIL_ENCRPT',"ssl");
 define('SMTP_PORT', 465);
 
 // メールアドレス
-define('MAIL_FROM','****');
+define('MAIL_FROM','メールアドレス');
 
 // 表示名
 define('MAIL_FROM_NAME','cocha 運営');
 
 // メールタイトル
-define('MAIL_SUBJECT','cocha への新規ご登録ありがとうございます');
+define('MAIL_SUBJECT','【cocha】への本登録が完了しました。');

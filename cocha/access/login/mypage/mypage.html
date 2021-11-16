@@ -19,45 +19,75 @@
 
             <!-- 左側 -->
             <div class="sidebar">
-                <ul>
-                    <li>プロフィール</li>
-                    <li>フレンド</li>
-                    <li>トーク</li>
-                    <li>設定</li>
-                    <li>ログアウト</li>
+                <ul class="menu">
+                    <li>
+                        <div class="dropdown">
+                            プロフィール
+                        </div>
+                        <ul class="submenuItems now">
+                            <li>プロフィール設定</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            フレンド
+                        </div>
+                        <ul class="submenuItems">
+                            <li>フレンド一覧</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            トーク
+                        </div>
+                        <ul class="submenuItems">
+                            <li>トーク一覧</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <div class="dropdown">
+                            ログアウト
+                        </div>
+                        <ul class="submenuItems">
+                            <li>ログアウト</li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
 
-            <!-- <div class="profile">プロフィール</div>
-            <div class="friend">フレンド</div>
-            <div class="option">設定</div>
-            <div class="logout">ログアウト</div> -->
-            
             <!-- 右側 -->
-            <div class="talk">
+            <div class="menu_content">
 
-                <!-- チャット欄 -->
-                <div class="scroll">
-                    <div class="face_icon">
-                        <!-- <img src="cat.jpeg"> -->
-                    </div>
-                    <div class="chat">
-                        <!-- メッセージ表示欄 -->
-                        <div id="msg_box"></div>
-                    </div>
-                </div>
+                <div class="content profile show">プロフィール画面</div>
+                <div class="content friend">フレンド画面</div>
 
-                <!-- フォーム欄 -->
-                <div class="action">
-                    <form method="post" action="">
-                        <div class="form_area">
-                            <textarea id="msg" name="message" value="" placeholder="メッセージを入力"></textarea>
-                            <!-- <input id="msg" type="text" name="message" value=""> -->
-                            <input class="submit" type="button" name="送信" value="送信" onclick="writeMessage()">
+                <div class="content talk">
+                    <!-- チャット欄 -->
+                    <div class="scroll">
+                        <div class="face_icon">
+                            <!-- <img src="cat.jpeg"> -->
                         </div>
-                    </form>
+                        <div class="chat">
+                            <!-- メッセージ表示欄 -->
+                            <div id="msg_box"></div>
+                        </div>
+                    </div>
+
+                    <!-- フォーム欄 -->
+                    <div class="action">
+                        <form method="post" action="">
+                            <div class="form_area">
+                                <textarea id="msg" name="message" value="" placeholder="メッセージを入力"></textarea>
+                                <input class="submit" type="button" name="送信" value="送信" onclick="writeMessage()">
+                            </div>
+                        </form>
+                    </div>
                 </div>
+
+                <div class="content logout">ログアウト画面</div>
             </div>
+
+        </div>
 
         </div>
 

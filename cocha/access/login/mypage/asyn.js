@@ -1,4 +1,47 @@
-//ログファイル読み込み
+$(function () { //htmlが読み込まれた後に実行
+
+    //サイドバー
+    var Accordion = function (el, multiple) {
+        this.el = el || {};
+        this.multiple = multiple || false;
+
+        var dropdownlink = this.el.find('.dropdown');
+        dropdownlink.on('click',
+            { el: this.el, multiple: this.multiple },
+            this.dropdown);
+    }
+    //プロトタイプ(dropdown)
+    Accordion.prototype.dropdown = function (e) {
+        var $el = e.data.el,
+            $this = $(this),
+            $next = $this.next();
+
+        $next.slideToggle();
+        $this.parent().toggleClass('open');
+
+        if (!e.data.multiple) {
+            $el.find('.submenuItems').not($next).slideUp().parent().removeClass('open');
+        }
+    }
+
+    var accordion = new Accordion($('.menu'), false);
+
+    //タブ切り替え
+    var tabs = $(".submenuItems"); //タブの数取得(配列)
+    $(".submenuItems").on("click", function () {
+        $(".now").removeClass("now");
+        $(this).addClass("now"); //クリックしたらnowクラスを追加
+        const idx = tabs.index(this); //何番目の要素か取得
+        $(".content").removeClass("show");
+        $(".content").eq(idx).addClass("show");
+    })
+
+    //定期的にメッセージ読み込み
+    loadMessage();
+    setInterval("loadMessage()", 3000); //読み込み制限
+});
+
+//ログ読み込み
 function loadMessage() {
 
     $.ajax({
@@ -16,9 +59,9 @@ function loadMessage() {
         alert("読み込み失敗");
     });
 
-}
+};
 
-//ログファイル書き込み
+//送信ボタン押したときに書き込み
 function writeMessage() {
 
     $.ajax({
@@ -35,10 +78,4 @@ function writeMessage() {
         alert("書き込み失敗");
     });
 
-}
-
-//DOMの読み込み完了時
-$(document).ready(function () {
-    loadMessage();
-    setInterval("loadMessage()", 2000); //読み込み制限
-});
+};

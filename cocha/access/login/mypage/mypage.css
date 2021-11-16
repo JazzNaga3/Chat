@@ -1,9 +1,12 @@
 body {
-  /* width: 100vw;
-  height: 100vh; */
+  margin: 0;
+  padding: 0;
   position: relative;
   top: 0;
   left: 0;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro",
+    "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体",
+    "メイリオ", sans-serif;
 }
 
 header {
@@ -12,28 +15,22 @@ header {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 5vh;
-  background-color: rgba(0, 0, 0, 0.158);
+  height: 3vh;
+  background-color: #fff;
+  font-size: 2vh;
+  font-weight: bold;
 }
 
 main {
   /*main*/
   position: fixed;
-  top: 5vh;
+  top: 3vh;
   left: 0;
   bottom: 0;
   width: 100vw;
-  height: 95vh;
+  height: 97vh;
+  background-color: #e6e6e6;
 }
-
-/* footer {
-  position: absolute;
-  top: 95vh;
-  left: 0;
-  width: 100vw;
-  height: 5vh;
-  background-color: rgba(0, 0, 0, 0.137);
-} */
 
 .container {
   display: flex; /*sidebarとコンテンツ部分の親要素*/
@@ -41,40 +38,101 @@ main {
   top: 0;
   left: 0;
   width: 100vw;
-  height: 95vh;
+  height: 97vh;
 }
 
-.container .sidebar {
-  background-color: aqua;
+.sidebar {
   width: 25vw;
-  height: 95vh;
+  height: 97vh;
+  background-color: rgba(0, 0, 0);
 }
 
-.container .talk {
+.menu {
+  background: rgba(0, 0, 0, 0);
+  margin: 0;
+  padding-left: 3vw;
+}
+
+li.open .dropdown {
+  color: #fff;
+}
+
+li:last-child .dropdown {
+  border-bottom: 0;
+}
+
+.dropdown {
+  font-size: 2vmin;
+  cursor: pointer;
+  display: block;
+  padding: 3vh 0 3vh 0;
+  color: #fff;
+  position: relative;
+  transition: all 0.4s ease-out;
+}
+
+.dropdown:hover {
+  color: rgba(255, 255, 255, 0.6);
+}
+
+.submenuItems {
+  display: none;
+  font-size: 2vmin;
+  background: rgba(0, 0, 0, 0);
+  padding-left: 2vw;
+}
+
+.submenuItems li {
+  display: block;
+  color: gray;
+  padding: 1.5vh 0 1.5vh 0;
+  transition: all 0.4s ease-out;
+}
+
+.submenuItems li:hover {
+  color: rgba(128, 128, 128, 0.7);
+  cursor: pointer;
+}
+
+.submenuItems.now li {
+  color: rgba(128, 128, 128, 0.7);
+}
+
+.submenuItems.now li:hover {
+  cursor: text;
+}
+
+.content {
+  display: none;
+}
+
+div.show {
+  display: block;
+}
+
+.show.talk {
   display: flex;
+}
+
+.talk {
   flex-direction: column;
   position: relative;
-  background: linear-gradient(to bottom, #fff 0%, lightblue 100%);
+  /* background-color: #e6e6e6; */
+  background: linear-gradient(to bottom, #fff 0%, gray 100%);
   width: 75vw;
-  height: 95vh;
+  height: 97vh;
 }
 
-.talk .scroll {
+.scroll {
   overflow-x: hidden;
   overflow-y: scroll;
   height: 80vh;
 }
 
-/* #msg_box {
-  height: 90%;
-  display: flex;
-  flex-direction: column;
-} */
-
 .action {
   position: absolute;
   top: 80vh;
-  height: 15vh;
+  /* height: 10vh; */
 }
 
 .forma_area {
