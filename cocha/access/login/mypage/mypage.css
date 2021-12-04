@@ -1,163 +1,193 @@
-body {
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+  }
+  40%,
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+  60%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+* {
   margin: 0;
   padding: 0;
-  position: relative;
-  top: 0;
-  left: 0;
-  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro",
-    "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体",
-    "メイリオ", sans-serif;
 }
 
-header {
-  /*ヘッダー*/
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 3vh;
-  background-color: #fff;
-  font-size: 2vh;
-  font-weight: bold;
-}
-
+html,
+body,
 main {
-  /*main*/
-  position: fixed;
-  top: 3vh;
-  left: 0;
-  bottom: 0;
-  width: 100vw;
-  height: 97vh;
-  background-color: #e6e6e6;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+
+li {
+  list-style: none;
 }
 
 .container {
-  display: flex; /*sidebarとコンテンツ部分の親要素*/
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 97vh;
+  /*画面全体*/
+  width: 100%;
+  height: 100%;
+  background-color: rgb(220, 220, 220);
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
 
-.sidebar {
-  width: 25vw;
-  height: 97vh;
-  background-color: rgba(0, 0, 0);
+.icon_menu {
+  /*アイコン一覧*/
+  min-width: 100px;
+  height: 100%;
+  background-color: white;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  align-items: center;
+  border-right: solid 1px;
+  border-color: rgba(128, 128, 128, 0.8);
+  z-index: 10;
+  /* box-shadow: 1px 0px 10px; */
+}
+
+.icon_menu div:hover {
+  cursor: pointer;
+  color: rgba(0, 255, 34);
+  transform: perspective(100px) translateZ(30px);
+  transition: 0.15s;
+}
+
+.icon{
+  margin-top: 50px;
+}
+
+.icon.now {
+  color: rgba(0, 255, 34);
+  transform: perspective(100px) translateZ(30px);
 }
 
 .menu {
-  background: rgba(0, 0, 0, 0);
-  margin: 0;
-  padding-left: 3vw;
-}
-
-li.open .dropdown {
-  color: #fff;
-}
-
-li:last-child .dropdown {
-  border-bottom: 0;
-}
-
-.dropdown {
-  font-size: 2vmin;
-  cursor: pointer;
-  display: block;
-  padding: 3vh 0 3vh 0;
-  color: #fff;
+  width: 170px;
+  height: 100%;
   position: relative;
-  transition: all 0.4s ease-out;
 }
 
-.dropdown:hover {
-  color: rgba(255, 255, 255, 0.6);
-}
-
-.submenuItems {
+.menuItems {
+  /*戻す時はアニメーション不可*/
   display: none;
-  font-size: 2vmin;
-  background: rgba(0, 0, 0, 0);
-  padding-left: 2vw;
+  width: 100%;
+  height: 100%;
 }
 
-.submenuItems li {
-  display: block;
-  color: gray;
-  padding: 1.5vh 0 1.5vh 0;
-  transition: all 0.4s ease-out;
-}
-
-.submenuItems li:hover {
-  color: rgba(128, 128, 128, 0.7);
-  cursor: pointer;
-}
-
-.submenuItems.now li {
-  color: rgba(128, 128, 128, 0.7);
-}
-
-.submenuItems.now li:hover {
-  cursor: text;
-}
-
-.content {
-  display: none;
-}
-
-div.show {
-  display: block;
-}
-
-.show.talk {
+.menuItems.active {
+  /*優先*/
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  background-color: rgb(255, 255, 255);
   display: flex;
-}
-
-.talk {
   flex-direction: column;
   position: relative;
-  /* background-color: #e6e6e6; */
-  background: linear-gradient(to bottom, #fff 0%, gray 100%);
-  width: 75vw;
-  height: 97vh;
+  left: auto;
+  animation-name: slideIn; /*スライドイン*/
+  animation-duration: 0.5s;
+  animation-fill-mode: forwards;
+  /* box-shadow: 1px 0px 10px; */
+}
+
+.Items {
+  font-size: 15px;
+  text-align: left;
+  padding: 20px 10px 20px 10px;
+}
+
+.Items li:hover {
+  cursor: pointer;
+}
+
+.page_menu {
+  position: absolute;
+  left: 100px;
+}
+
+.page {
+  display: none;
+  opacity: 0;
+}
+
+.page.show {
+  display: flex;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+.talk_list { /*トーク画面*/
+  width: 750px;
+  height: 100vh;
+  flex-direction: column;
+  position: relative;
+  background-color: rgb(220, 220, 220);
 }
 
 .scroll {
   overflow-x: hidden;
-  overflow-y: scroll;
-  height: 80vh;
+  overflow-y: auto;
+  height: 80%;
 }
 
-.action {
-  position: absolute;
-  top: 80vh;
-  /* height: 10vh; */
+.scroll::-webkit-scrollbar{
+  width: 15px;
 }
 
-.forma_area {
-  display: flex;
-  justify-content: center;
-  position: relative;
+.scroll::-webkit-scrollbar-track{
+  background-color: rgb(200, 200, 200);
+  border-radius: 100px;
 }
 
-.action textarea {
-  position: absolute;
-  top: 3vh;
-  left: 20vw;
-  width: 35vw;
-  height: 8vh;
-  border: 2px solid #aaa;
-  border-radius: 5px;
-  resize: none;
-}
-
-.action .submit {
-  position: absolute;
-  top: 3vh;
-  left: 58vw;
-  border-radius: 5px;
-  height: 4vh;
+.scroll::-webkit-scrollbar-thumb{
+  background-color: rgba(0,155,255,0.5);
+  /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+  border-radius: 100px;
 }
 
 /* 自分以外(フレンド)の吹き出し */
@@ -206,7 +236,7 @@ div.show {
 /* 自分の吹き出し */
 .right_bubble {
   position: relative;
-  background: #85e249;
+  background-color: rgb(0, 210, 255);
   border: 1px solid #777;
   margin-right: 50px;
   margin-top: 10px;
@@ -235,7 +265,7 @@ div.show {
 }
 
 .right_bubble:after {
-  border-left-color: #85e249;
+  border-left-color: rgb(0,210,255);
   border-width: 7px;
   margin-top: -7px;
 }
@@ -251,4 +281,32 @@ div.show {
 ********************************/
 .clear_bubble {
   clear: both;
+}
+
+.action {
+  position: relative;
+  height: 20%;
+  margin-top: 15px;
+}
+
+.forma_area {
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.action textarea {
+  position: relative;
+  width: 250px;
+  max-height: 20px;
+  border: 2px solid #aaa;
+  border-radius: 3px;
+  resize: none;
+  font-size: 20px;
+}
+
+.action .submit {
+  position: relative;
+  border-radius: 5px;
+  padding: 5px;
 }

@@ -8,64 +8,82 @@
     <link rel="stylesheet" href="mypage.css" type="text/css">
     <script type="text/javascript" src="../../../js/jquery-3.6.0.min.js"></script>
     <script src="asyn.js"></script>
+    <script src="https://kit.fontawesome.com/1a2d3ed603.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <header>
-        Cocha
-    </header>
     <main>
         <div class="container">
 
-            <!-- 左側 -->
-            <div class="sidebar">
-                <ul class="menu">
-                    <li>
-                        <div class="dropdown">
-                            プロフィール
-                        </div>
-                        <ul class="submenuItems now">
-                            <li>プロフィール設定</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            フレンド
-                        </div>
-                        <ul class="submenuItems">
-                            <li>フレンド一覧</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            トーク
-                        </div>
-                        <ul class="submenuItems">
-                            <li>トーク一覧</li>
-                        </ul>
-                    </li>
-                    <li>
-                        <div class="dropdown">
-                            ログアウト
-                        </div>
-                        <ul class="submenuItems">
-                            <li>ログアウト</li>
-                        </ul>
-                    </li>
-                </ul>
+            <div class="icon_menu">
+                <div class="icon"><i class="fas fa-user fa-2x"></i></div>
+                <div class="icon"><i class="fas fa-users fa-2x"></i></div>
+                <div class="icon"><i class="fas fa-comment-dots fa-2x"></i></div>
+                <div class="icon"><i class="fas fa-cog fa-2x"></i></div>
             </div>
 
-            <!-- 右側 -->
-            <div class="menu_content">
+            <div class="menu">
 
-                <div class="content profile show">プロフィール画面</div>
-                <div class="content friend">フレンド画面</div>
+                <div class="menuItems">
+                    <ul class="Items">
+                        <li>プロフィール設定</li>
+                    </ul>
+                    <ul class="Items">
+                        <li>プロフィール</li>
+                    </ul>
+                </div>
 
-                <div class="content talk">
+                <div class="menuItems">
+                    <ul class="Items">
+                        <li>フレンド一覧</li>
+                    </ul>
+                    <ul class="Items">
+                        <li>フレンド管理</li>
+                    </ul>
+                </div>
+
+                <div class="menuItems">
+                    <ul class="Items">
+                        <li>トーク一覧</li>
+                    </ul>
+                    <ul class="Items">
+                        <li>トーク設定</li>
+                    </ul>
+                </div>
+
+                <div class="menuItems">
+                    <ul class="Items">
+                        <li>設定</li>
+                    </ul>
+                    <ul class="Items">
+                        <li>ログアウト</li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <div class="page_menu">
+
+                <div class="page profile_set show">
+                    プロフィール設定画面
+                </div>
+
+                <div class="page profile">
+                    プロフィール管理画面
+                </div>
+
+                <div class="page friend_list">
+                    フレンド一覧画面
+                </div>
+
+                <div class="page friend">
+                    フレンド管理画面
+                </div>
+
+                <div class="page talk_list">
                     <!-- チャット欄 -->
                     <div class="scroll">
                         <div class="face_icon">
-                            <!-- <img src="cat.jpeg"> -->
                         </div>
                         <div class="chat">
                             <!-- メッセージ表示欄 -->
@@ -84,17 +102,23 @@
                     </div>
                 </div>
 
-                <div class="content logout">ログアウト画面</div>
+                <div class="page talk_set">
+                    トーク設定画面
+                </div>
+
+                <div class="page set">
+                    全般設定画面
+                </div>
+
+                <div class="page logout">
+                    ログアウト画面
+                </div>
+
             </div>
 
         </div>
 
-        </div>
-
     </main>
-    <!-- <footer>
-        フッター
-    </footer> -->
 </body>
 
 </html>
