@@ -7,7 +7,7 @@
     <title>mypage</title>
     <link rel="stylesheet" href="mypage.css" type="text/css">
     <script type="text/javascript" src="../../../js/jquery-3.6.0.min.js"></script>
-    <script src="asyn.js"></script>
+    <script src="mypage.js"></script>
     <script src="https://kit.fontawesome.com/1a2d3ed603.js" crossorigin="anonymous"></script>
 </head>
 
@@ -26,9 +26,6 @@
 
                 <div class="menuItems">
                     <ul class="Items">
-                        <li>プロフィール設定</li>
-                    </ul>
-                    <ul class="Items">
                         <li>プロフィール</li>
                     </ul>
                 </div>
@@ -37,17 +34,11 @@
                     <ul class="Items">
                         <li>フレンド一覧</li>
                     </ul>
-                    <ul class="Items">
-                        <li>フレンド管理</li>
-                    </ul>
                 </div>
 
                 <div class="menuItems">
                     <ul class="Items">
                         <li>トーク一覧</li>
-                    </ul>
-                    <ul class="Items">
-                        <li>トーク設定</li>
                     </ul>
                 </div>
 
@@ -61,26 +52,86 @@
                 </div>
 
             </div>
-
+            
             <div class="page_menu">
 
                 <div class="page profile_set show">
-                    プロフィール設定画面
-                </div>
-
-                <div class="page profile">
-                    プロフィール管理画面
-                </div>
-
-                <div class="page friend_list">
-                    フレンド一覧画面
+                    プロフィール画面
                 </div>
 
                 <div class="page friend">
-                    フレンド管理画面
+
+                    <div class="container">
+
+                        <div class="friend_search">
+                            <div class="formItems">
+                                <form method="post" action="">
+                                    <input class="formItem"type="text" name="search_username" placeholder="ユーザ名">
+                                    <i class="fas fa-search fa-lg fa-fw formItem"></i>
+                                </form>
+                            </div>
+                            <div class="recommend_list">
+                                <div class="recommend_friend"><div class="rf_name">おすすめフレンド1</div><i class="fas fa-plus fa-fw"></i></div>
+                                <div class="recommend_friend"><div class="rf_name">おすすめフレンド2</div><i class="fas fa-plus fa-fw"></i></div>
+                                <div class="recommend_friend"><div class="rf_name">おすすめフレンド3</div><i class="fas fa-plus fa-fw"></i></div>
+                                <div class="recommend_friend"><div class="rf_name">おすすめフレンド4</div><i class="fas fa-plus fa-fw"></i></div>
+                                <div class="recommend_friend"><div class="rf_name">おすすめフレンド5</div><i class="fas fa-plus fa-fw"></i></div>
+                            </div>
+                        </div>
+    
+                        <div class="friend_list">
+                            <div class="fl_label">
+                                <span>フレンド一覧</span>
+                            </div>
+                            <div class="friends">
+                                <div class="friend_name"><div class="f_name">フレンド1</div><i class="fas fa-ellipsis-h fa-fw"></i></div>
+                                <div class="friend_name"><div class="f_name">フレンド2</div><i class="fas fa-ellipsis-h fa-fw"></i></div>
+                                <div class="friend_name"><div class="f_name">フレンド3</div><i class="fas fa-ellipsis-h fa-fw"></i></div>
+                                <div class="friend_name"><div class="f_name">フレンド4</div><i class="fas fa-ellipsis-h fa-fw"></i></div>
+                                <div class="friend_name"><div class="f_name">フレンド5</div><i class="fas fa-ellipsis-h fa-fw"></i></div>
+                                <div class="friend_name"><div class="f_name">フレンド6</div><i class="fas fa-ellipsis-h fa-fw"></i></div>
+                                <div class="friend_name"><div class="f_name">フレンド7</div><i class="fas fa-ellipsis-h fa-fw"></i></div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="friend_check">
+                        <div class="fc_label">
+                            <div class="fc_label_name">フレンドリクエスト</div>
+                        </div>
+                        <div class="fc_list">
+                            <div class="fc_list_content">
+                                <div class="pre_friend_name">仮フレンド名1</div>
+                                <div class="approval_button"><i class="fas fa-check"></i></div>
+                                <div class="rejection_button"><i class="fas fa-times"></i></div>
+                            </div>
+                            <div class="fc_list_content">
+                                <div class="pre_friend_name">仮フレンド名2</div>
+                                <div class="approval_button"><i class="fas fa-check"></i></div>
+                                <div class="rejection_button"><i class="fas fa-times"></i></div>
+                            </div>
+                            <div class="fc_list_content">
+                                <div class="pre_friend_name">仮フレンド名3</div>
+                                <div class="approval_button"><i class="fas fa-check"></i></div>
+                                <div class="rejection_button"><i class="fas fa-times"></i></div>
+                            </div>
+                            <div class="fc_list_content">
+                                <div class="pre_friend_name">仮フレンド名4</div>
+                                <div class="approval_button"><i class="fas fa-check"></i></div>
+                                <div class="rejection_button"><i class="fas fa-times"></i></div>
+                            </div>
+                            <div class="fc_list_content">
+                                <div class="pre_friend_name">仮フレンド名5</div>
+                                <div class="approval_button"><i class="fas fa-check"></i></div>
+                                <div class="rejection_button"><i class="fas fa-times"></i></div>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
 
-                <div class="page talk_list">
+                <div class="page talk">
                     <!-- チャット欄 -->
                     <div class="scroll">
                         <div class="face_icon">
@@ -96,18 +147,14 @@
                         <form method="post" action="">
                             <div class="form_area">
                                 <textarea id="msg" name="message" value="" placeholder="メッセージを入力"></textarea>
-                                <input class="submit" type="button" name="送信" value="送信" onclick="writeMessage()">
+                                <input class="submit" type="button" name="送信" value="送信">
                             </div>
                         </form>
                     </div>
                 </div>
 
-                <div class="page talk_set">
-                    トーク設定画面
-                </div>
-
                 <div class="page set">
-                    全般設定画面
+                    設定画面
                 </div>
 
                 <div class="page logout">

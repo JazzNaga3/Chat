@@ -11,17 +11,9 @@
     //エラーメッセージ
     $errors = array();
 
-    // DB接続用の変数
-    $dsn = "mysql:dbname=データベース名;host=ホスト名";
-    $user = "ユーザ名";
-    $db_pass = "パスワード";
-    try{
-        //データベース接続
-        $pdo = new PDO($dsn, $user, $db_pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-    }catch(PDOException $e){
-        echo $e->getMesseage()."<br>";
-        die();
-    }
+    // DB接続
+    require_once("../../function.php");
+    $pdo = connectDB_access();
 
     if(empty($_GET)){ //$_GETが空の時
         header("Location: signup.php");
@@ -35,7 +27,7 @@
         }else{
 
             
-            $sql = "SELECT * FROM pre_user_data WHERE urltoken = :urltoken AND flag = 0";
+            $sql = "SELECT (name, email, pass, date) FROM pre_user_data WHERE urltoken = :urltoken AND flag = 0";
             $stmt = $pdo->prepare($sql);
             $stmt->bindParam(":urltoken", $urltoken, PDO::PARAM_STR);
             $stmt->execute();

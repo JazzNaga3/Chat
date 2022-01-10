@@ -22,15 +22,10 @@
     $email = $_POST["email"];
     $pass = $_POST["pass"];
 
-    // DB接続用の変数
-    $dsn = "mysql:dbname=データベース名;host=ホスト名";
-    $user = "ユーザ名";
-    $db_pass = "パスワード";
-
+    // DB接続
+    require_once("../../function.php");
+    $pdo = connectDB_access();
     try{    
-        //データベース接続
-        $pdo = new PDO($dsn, $user, $db_pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-    
         //テーブル作成(仮登録済み会員)
         $sql = "CREATE TABLE IF NOT EXISTS pre_user_data"
                 ."("
@@ -62,25 +57,25 @@
     }
     
     //本登録ユーザとの名前重複確認
-    $sql = "SELECT * FROM user_data WHERE name = :name";
+    $sql = "SELECT name FROM user_data WHERE name = :name";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":name", $name, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetch();
-    if(!empty($result)){ //重複していた場合
+    if(!empty($result)) //重複していた場合
         $errors["overlap_name"] = "入力されたユーザ名は既に使われております。";
-    }
+    
     
     //本登録ユーザとのメールアドレス重複確認
-    $sql = "SELECT * FROM user_data WHERE email = :email";
+    $sql = "SELECT email FROM user_data WHERE email = :email";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":email", $email, PDO::PARAM_STR);
     $stmt->execute();
     $result = $stmt->fetch();
 
-    if(!empty($result)){ //メールアドレスが重複していた場合
+    if(!empty($result)) //メールアドレスが重複していた場合
         $errors["overlap_email"] = "入力されたメールアドレスは既に利用されております。";
-    }
+
 
     if(count($errors) == 0){ //エラーなしの場合
 

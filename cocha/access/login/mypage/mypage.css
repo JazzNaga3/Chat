@@ -1,3 +1,6 @@
+/*******************************
+* keyframes 定義
+********************************/
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -51,20 +54,38 @@
   padding: 0;
 }
 
+/*******************************
+* ページ定義
+********************************/
 html,
 body,
 main {
   width: 100%;
   height: 100%;
   margin: 0;
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro",
+    "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体",
+    "メイリオ", sans-serif;
+  letter-spacing: 0.05em;
+  background-color: rgb(220, 220, 220);
 }
 
 li {
   list-style: none;
 }
 
+input,
+textarea {
+  font-family: "Hiragino Kaku Gothic Pro", "ヒラギノ角ゴ Pro",
+    "Yu Gothic Medium", "游ゴシック Medium", YuGothic, "游ゴシック体",
+    "メイリオ", sans-serif;
+  letter-spacing: 0.05em;
+}
+
+/*******************************
+* 全体
+********************************/
 .container {
-  /*画面全体*/
   width: 100%;
   height: 100%;
   background-color: rgb(220, 220, 220);
@@ -73,8 +94,10 @@ li {
   position: relative;
 }
 
+/*******************************
+* アイコンメニュー
+********************************/
 .icon_menu {
-  /*アイコン一覧*/
   min-width: 100px;
   height: 100%;
   background-color: white;
@@ -84,25 +107,25 @@ li {
   position: relative;
   align-items: center;
   border-right: solid 1px;
-  border-color: rgba(128, 128, 128, 0.8);
-  z-index: 10;
-  /* box-shadow: 1px 0px 10px; */
+  /* border-color: rgba(128, 128, 128, 0.8); */
+  border-color: gray;
+  z-index: 10; /*高さ*/
 }
 
-.icon_menu div:hover {
+.icon {
+  margin-top: 50px;
+}
+
+.icon:hover {
   cursor: pointer;
   color: rgba(0, 255, 34);
-  transform: perspective(100px) translateZ(30px);
+  transform: perspective(100px) translateZ(15px);
   transition: 0.15s;
-}
-
-.icon{
-  margin-top: 50px;
 }
 
 .icon.now {
   color: rgba(0, 255, 34);
-  transform: perspective(100px) translateZ(30px);
+  transform: perspective(100px) translateZ(15px);
 }
 
 .menu {
@@ -144,6 +167,9 @@ li {
   cursor: pointer;
 }
 
+/*******************************
+* ページ部分(全体)
+********************************/
 .page_menu {
   position: absolute;
   left: 100px;
@@ -154,14 +180,17 @@ li {
   opacity: 0;
 }
 
-.page.show {
-  display: flex;
+div.page.show {
+  display: flex !important;
   animation-name: fadeIn;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
-.talk_list { /*トーク画面*/
+/*******************************
+* トークリストページ
+********************************/
+.page.talk {
   width: 750px;
   height: 100vh;
   flex-direction: column;
@@ -175,18 +204,17 @@ li {
   height: 80%;
 }
 
-.scroll::-webkit-scrollbar{
-  width: 15px;
+.scroll::-webkit-scrollbar {
+  width: 10px;
 }
 
-.scroll::-webkit-scrollbar-track{
-  background-color: rgb(200, 200, 200);
+.scroll::-webkit-scrollbar-track {
+  background-color: transparent;
   border-radius: 100px;
 }
 
-.scroll::-webkit-scrollbar-thumb{
-  background-color: rgba(0,155,255,0.5);
-  /* box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3); */
+.scroll::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.5);
   border-radius: 100px;
 }
 
@@ -236,7 +264,7 @@ li {
 /* 自分の吹き出し */
 .right_bubble {
   position: relative;
-  background-color: rgb(0, 210, 255);
+  background-color: #8de055;
   border: 1px solid #777;
   margin-right: 50px;
   margin-top: 10px;
@@ -265,7 +293,7 @@ li {
 }
 
 .right_bubble:after {
-  border-left-color: rgb(0,210,255);
+  border-left-color: #8de055;
   border-width: 7px;
   margin-top: -7px;
 }
@@ -276,9 +304,6 @@ li {
   margin-top: -8px;
 }
 
-/*******************************
-* 割り込みを解除
-********************************/
 .clear_bubble {
   clear: both;
 }
@@ -309,4 +334,230 @@ li {
   position: relative;
   border-radius: 5px;
   padding: 5px;
+}
+
+/*******************************
+* フレンドページ
+********************************/
+.page.friend.show {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.friend_search,
+.friend_list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: nowrap;
+  width: 400px;
+  height: 380px;
+  margin: 100px 50px 0 125px;
+  border: 1px solid gray;
+}
+
+.fas.fa-search:hover,
+.fas.fa-plus:hover,
+.fas.fa-ellipsis-h:hover {
+  cursor: pointer;
+  color: gray;
+  transition: 0.15s;
+}
+
+/*******************************
+* フレンド検索欄、追加欄
+********************************/
+.formItems {
+  margin: 30px 0 20px 0;
+}
+
+input.formItem {
+  width: 250px;
+  font-size: 20px;
+  border: 1px solid gray;
+  border-radius: 3px;
+}
+
+input.formItem:focus {
+  outline: 1px solid gray;
+}
+
+.recommend_list {
+  width: 250px;
+  font-size: 20px;
+  margin: 0 0 30px 0;
+}
+
+.recommend_friend {
+  padding: 10px 0 10px 0;
+  width: 250px;
+  position: relative;
+}
+
+.recommend_friend .rf_name {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* word-break: break-all;
+  text-overflow: ellipsis; */
+}
+
+.recommend_friend i {
+  /*アイコンを端に寄せる*/
+  position: absolute;
+  top: 16px;
+  right: 0;
+}
+
+/*******************************
+* フレンド一覧
+********************************/
+.fl_label {
+  margin: 35px 0 20px 0;
+}
+
+.fl_label span {
+  width: 300px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.friends {
+  font-size: 20px;
+  margin: 0 0 30px 0;
+  width: 300px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  position: relative;
+  left: 30px;
+}
+
+.friends::-webkit-scrollbar {
+  width: 8px;
+}
+
+.friends::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+.friends::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 100px;
+}
+
+.friend_name {
+  width: 300px;
+  position: relative;
+  padding: 10px 0 10px 0;
+}
+
+.friend_name .f_name {
+  width: 200px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  /* word-break: break-all;
+  text-overflow: ellipsis; */
+}
+
+.friend_name i {
+  position: absolute;
+  top: 16px;
+  right: 50px;
+}
+
+/*******************************
+* フレンド承認・拒否欄
+********************************/
+.friend_check {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+  height: 220px;
+  border: 1px solid gray;
+  text-align: center;
+  position: relative;
+  top: 50px;
+  left: 25px;
+}
+
+.fc_label {
+  font-size: 20px;
+  font-weight: bold;
+  margin: 20px 0 20px 0;
+}
+
+.fc_list {
+  display: flex;
+  flex-direction: column;
+  width: 460px;
+  height: 138px;
+  margin-bottom: 10px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+.fc_list::-webkit-scrollbar {
+  width: 5px;
+}
+
+.fc_list::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 100px;
+}
+
+.fc_list::-webkit-scrollbar-thumb {
+  background-color: rgba(128, 128, 128, 0.5);
+  border-radius: 100px;
+}
+
+.fc_list_content {
+  display: flex;
+  flex-direction: row;
+  width: 460px;
+  padding: 10px 0 10px 0;
+}
+
+.pre_friend_name {
+  width: 250px;
+  position: relative;
+  left: 40px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.approval_button,
+.rejection_button {
+  position: relative;
+  left: 50px;
+}
+
+.approval_button {
+  width: 50px;
+  background-color: rgb(0, 255, 125, 0.8);
+  margin-right: 10px;
+}
+
+.approval_button:hover {
+  cursor: pointer;
+  background-color: rgb(74, 255, 129, 0.6);
+  color: gray;
+  transition: 0.15s;
+}
+
+.rejection_button {
+  width: 50px;
+  background-color: #ff3b3b;
+}
+
+.rejection_button:hover {
+  cursor: pointer;
+  background-color: rgba(255, 0, 0, 0.445);
+  color: gray;
+  transition: 0.15s;
 }

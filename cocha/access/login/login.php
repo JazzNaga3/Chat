@@ -52,16 +52,9 @@
 $name = $_POST["user_name"];
 $pass = $_POST["pass"];
 
-// DB接続設定
-$dsn = "mysql:dbname=データベース名;host=ホスト名";
-$user = "ユーザ名";
-$db_pass = "パスワード";
-try {
-    $pdo = new PDO($dsn, $user, $db_pass, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING));
-} catch (PDOException $e) {
-    echo "データベース接続失敗：";
-    echo $e->getMessage() . "<br>";
-}
+// DB接続
+require_once("../../function.php");
+$pdo = connectDB_access();
 
 $sql = "SELECT * FROM user_data WHERE name = :name";
 $stmt = $pdo->prepare($sql);
